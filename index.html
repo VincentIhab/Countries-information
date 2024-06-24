@@ -7,11 +7,32 @@
     <link rel="stylesheet" href="styles/css/style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Weather App</h1>
+    <nav class="nav">
+        <div class="nav__logo">
+            <h1>Weather App</h1>
+        </div>
+        <div class="nav__links">
+            <ul>
+                <li>
+                    <a href="">Map Explore</a>
+                </li>
+                <li>
+                    <a href="">Country's info</a>
+                </li>
+                <li>
+                    <a href="">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main class="container">
         <div class="search-box">
-            <input type="text" id="city" placeholder="Enter city name">
-            <button id="search-btn">Search</button>
+            <h3 class="u-margin-bottom-small "><span class="hide_heading">Let's see your</span> <span id="moveheading_call" class="moveheading_call"> city weather</span> </h3>
+            <input type="text" id="city" placeholder="Cairo" class="search-box__input">
+            <button id="search-btn"  class="search-box__button">
+                <span class="search-box__search-i-1 search-box__icon"></span>
+                <span class="search-box__search-i-2 search-box__icon"></span></span>
+            </button>
         </div>
         <div class="weather-info">
             <h2 id="city-name"></h2>

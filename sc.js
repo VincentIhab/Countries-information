@@ -1,4 +1,7 @@
 const apiKey = "f7d8f6fc7b4a30ec9ebc224d9f87a91f";
+const searchBox = document.querySelector(".search-box");
+const moveHeading = document.querySelector(".moveheading_call");
+const headingText = document.querySelector(".hide_heading");
 const searchBtn = document.getElementById("search-btn");
 const cityInput = document.getElementById("city");
 
@@ -20,6 +23,7 @@ async function getWeatherData(city) {
     }
     const data = await response.json();
     displayWeatherData(data);
+    
   } catch (error) {
     alert(error.message);
   }
@@ -27,7 +31,9 @@ async function getWeatherData(city) {
 
 function displayWeatherData(data) {
     console.log(data);
-  document.getElementById("city-name").textContent = data.name;
+
+  document.getElementById("city-name").textContent = data.name; 
+  document.getElementById("moveheading_call").textContent = `${data.name} city weather`;
   document.getElementById(
     "temperature"
   ).textContent = `Temperature: ${data.main.temp} °C`;
@@ -40,4 +46,16 @@ function displayWeatherData(data) {
   document.getElementById(
     "wind-speed"
   ).textContent = `Wind Speed: ${data.wind.speed} m/s`;
+  moveElements()
+  
+}
+
+
+function moveElements() {
+  cityInput.value = ''
+  cityInput.placeholder = 'Search'
+  searchBox.classList.add("form_move")
+  headingText.classList.add("cut-word")
+  moveHeading.classList.add("moveheading")
+
 }

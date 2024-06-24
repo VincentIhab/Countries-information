@@ -1,0 +1,77 @@
+.search-box
+    @include absCenter
+    h3 
+        font-weight: 800
+        font-size: 2.4rem
+        color: $color-black
+        letter-spacing: .11rem
+        position: relative
+        
+    &__input
+        width: 50rem
+        height: 4rem
+        padding: 1rem 2rem
+        border-radius: 8px
+        border: none
+        background-color: $color-black-low-opacity
+        color: #000
+        box-shadow: 0rem .3rem 1rem #00000085
+        transition: background-color .2s ease-out
+        margin-right: 1.5rem
+        font-weight: 800
+        font-size: 1.9rem
+
+        &:hover,
+        &:active,
+        &:focus,
+        &:active
+            background-color: $color-black-low-opacity
+            border: none
+
+    button
+        padding: 2rem  
+        border: none
+        border-radius: 8px 
+        background-color: $color-black-low-opacity
+        box-shadow: 0rem .3rem 1rem #00000085
+        cursor: pointer
+        position: absolute
+        &:hover
+            background-color: $color-black
+        
+
+
+    &__search-i-1
+        position: absolute
+        bottom: 4.5px
+        right: 10px
+        width: .3rem
+        height: 1rem
+        background-color: #1f1403
+        transform: rotate(135deg)
+    &__search-i-2
+        @include absCenter
+        top: 49%
+        left: 48% 
+        width: 1.9rem
+        height: 1.9rem
+        border-radius: 50%
+        background-color: #ff99001c
+        border: .3rem solid #1f1403
+        transition: all .3s ease-in
+        
+    button:hover &__search-i-2
+        background-color: #1b1b1b21
+        width: 1.9rem
+        height: 1.9rem
+
+
+
+
+
+.form_move 
+    transform: translate(-50%, -295%)
+
+
+
+

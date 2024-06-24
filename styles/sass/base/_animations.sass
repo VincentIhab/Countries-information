@@ -1,0 +1,65 @@
+
+.form_move 
+    animation-name: moveInLeft
+    animation-duration: 0.9s
+    animation-timing-function: ease-out
+  
+    @keyframes moveInLeft
+      0%
+        transform: translate(-50%, -20%)
+      100%
+        transform: translate(-50%, -295%)
+
+
+
+
+.cut-word 
+    opacity: 1
+    animation: cut .1s ease
+    position: relative
+    z-index: -1
+
+@keyframes cut
+    0% 
+        opacity: 1
+         
+    
+    100% 
+        opacity: 0
+    
+
+.cut-word 
+    opacity: 0
+
+    
+.moveheading
+    animation: moveheading 1s ease
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-71%, -47%)
+    z-index: 10000
+    opacity: 0
+
+
+@keyframes moveheading 
+    0% 
+        transform: translate(-71%, -47%)
+        opacity: 0
+         
+    
+    20% 
+        transform: translate(-50%, -47%)
+        opacity: 0
+
+    50% 
+        transform: translate(-50%, 225%)   
+        
+    
+    100% 
+        transform: translate(-50%, 225%)
+        opacity: 1 
+
+.moveheading
+   transform: translate(-50%, 225%)
+   opacity: 1 
