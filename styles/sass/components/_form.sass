@@ -1,39 +1,47 @@
+.container
+    background-size: cover
+    background-position: center
+
 .search-box
     @include absCenter
     h3 
         font-weight: 800
         font-size: 2.4rem
-        color: $color-black
+        color: #c4c4c4
+        text-shadow: 0 .5rem .2rem #0000003b
         letter-spacing: .11rem
         position: relative
+        width: 100%
         
     &__input
         width: 50rem
         height: 4rem
-        padding: 1rem 2rem
+        padding: 1rem 
+        background-color: #0000009a
         border-radius: 8px
-        border: none
-        background-color: $color-black-low-opacity
-        color: #000
-        box-shadow: 0rem .3rem 1rem #00000085
+        border: 3px solid #00000015
+        backdrop-filter: blur(3px)
+        -webkit-backdrop-filter: blur(10px)
+        color: $color-black-low-opacity
+        font-size: 1.9rem
+        font-weight: 900
+        box-shadow: 0rem .3rem 2rem #00000034
         transition: background-color .2s ease-out
         margin-right: 1.5rem
-        font-weight: 800
-        font-size: 1.9rem
 
         &:hover,
         &:active,
         &:focus,
         &:active
-            background-color: $color-black-low-opacity
-            border: none
+            outline: none
+            order: 2px solid #4CAF50
 
     button
         padding: 2rem  
         border: none
         border-radius: 8px 
         background-color: $color-black-low-opacity
-        box-shadow: 0rem .3rem 1rem #00000085
+        box-shadow: 0rem .3rem 1rem #00000013
         cursor: pointer
         position: absolute
         &:hover
@@ -70,8 +78,8 @@
 
 
 .form_move 
-    transform: translate(-50%, -295%)
-
-
+    top: 15%
+    width: 100%
+    
 
 

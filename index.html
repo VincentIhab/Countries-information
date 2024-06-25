@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
+    <title>City Weather</title>
     <link rel="stylesheet" href="styles/css/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="./styles/img/logo.png" />
+
 </head>
 <body>
+    <img class="container__background" src="./styles/img/background.jpg" />
     <nav class="nav">
-        <div class="nav__logo">
-            <h1>Weather App</h1>
+        <div class="nav__container_logo">
+            <img class="nav_logo" src="./styles/img/logo.png" alt="WeatherLogo"/>
         </div>
         <div class="nav__links">
             <ul>
@@ -27,20 +30,21 @@
     </nav>
     <main class="container">
         <div class="search-box">
-            <h3 class="u-margin-bottom-small "><span class="hide_heading">Let's see your</span> <span id="moveheading_call" class="moveheading_call"> city weather</span> </h3>
+            <h3 class="u-margin-bottom-small "><span class="hide_heading">See how</span> <span id="moveheading_call" class="moveheading_call">is the weather in any city</span> </h3>
             <input type="text" id="city" placeholder="Cairo" class="search-box__input">
             <button id="search-btn"  class="search-box__button">
                 <span class="search-box__search-i-1 search-box__icon"></span>
                 <span class="search-box__search-i-2 search-box__icon"></span></span>
             </button>
         </div>
-        <div class="weather-info">
+        <div class="weather-info weather-info_hidden">
             <h2 id="city-name"></h2>
             <p id="temperature"></p>
             <p id="description"></p>
             <p id="humidity"></p>
             <p id="wind-speed"></p>
         </div>
+
     </div>
     <script src="sc.js"></script>
 </body>

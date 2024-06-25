@@ -2,15 +2,36 @@ const apiKey = "f7d8f6fc7b4a30ec9ebc224d9f87a91f";
 const searchBox = document.querySelector(".search-box");
 const moveHeading = document.querySelector(".moveheading_call");
 const headingText = document.querySelector(".hide_heading");
+const weatherInfo = document.querySelector(".weather-info");
+const background = document.querySelector(".container__background");
 const searchBtn = document.getElementById("search-btn");
 const cityInput = document.getElementById("city");
 
-searchBtn.addEventListener("click", () => {
+function handleInput() {
+  const cityName = cityInput.value;
+  if (cityName) {
+      getWeatherData(cityName);
+  }
+}
+
+function addMultipleEventListeners(elements, events, handler) {
+  elements.forEach(element => {
+    events.forEach(event => element.addEventListener(event, handler));
+  });
+}
+
+const elements = [cityInput, searchBtn];
+const events = ['click'];
+
+function handleInput() {
   const cityName = cityInput.value;
   if (cityName) {
     getWeatherData(cityName);
   }
-});
+}
+
+addMultipleEventListeners(elements, events, handleInput);
+
 
 async function getWeatherData(city) {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -46,6 +67,7 @@ function displayWeatherData(data) {
   document.getElementById(
     "wind-speed"
   ).textContent = `Wind Speed: ${data.wind.speed} m/s`;
+  getCityName(data.name)
   moveElements()
   
 }
@@ -57,5 +79,28 @@ function moveElements() {
   searchBox.classList.add("form_move")
   headingText.classList.add("cut-word")
   moveHeading.classList.add("moveheading")
+  weatherInfo.classList.replace("weather-info_hidden", "weather-info_show")
+  background.style.display = "none"
+}
 
+
+  
+async function getCityName(City) {
+  const accessKey = 'AAhjoWEkWTjmGk4QtscUIQpse7hnPsukniGGi76upnU'; 
+  const url = `https://api.unsplash.com/search/photos?query=${City}&client_id=${accessKey}`;
+  try {
+      const response = await fetch(url);
+      if (!response.ok) {
+          throw new Error('Failed to fetch photo');
+      }
+      const data = await response.json();
+      if (data.results.length > 0) {
+          const photoUrl = data.results[0].urls.regular;
+          document.body.style.backgroundImage = `url(${photoUrl})`;
+      } else {
+          alert('No photos found for this city.');
+      }
+  } catch (error) {
+      console.error('Error:', error.message);
+  }
 }

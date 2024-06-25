@@ -1,14 +1,16 @@
-
 .form_move 
     animation-name: moveInLeft
     animation-duration: 0.9s
     animation-timing-function: ease-out
+    top: 40%
+    width: 100%
+    text-align: center
   
     @keyframes moveInLeft
       0%
-        transform: translate(-50%, -20%)
+        top: 40%
       100%
-        transform: translate(-50%, -295%)
+        top: 15%
 
 
 
@@ -35,31 +37,35 @@
 .moveheading
     animation: moveheading 1s ease
     position: absolute
-    top: 50%
     left: 50%
-    transform: translate(-71%, -47%)
     z-index: 10000
     opacity: 0
+    top: 300%
 
 
 @keyframes moveheading 
     0% 
-        transform: translate(-71%, -47%)
         opacity: 0
          
     
     20% 
-        transform: translate(-50%, -47%)
         opacity: 0
 
     50% 
-        transform: translate(-50%, 225%)   
         
     
     100% 
-        transform: translate(-50%, 225%)
         opacity: 1 
 
 .moveheading
-   transform: translate(-50%, 225%)
+   transform: translate(-50%, -50%)
    opacity: 1 
+
+
+@keyframes displayweatherdata
+       0% 
+        opacity: 0
+         
+     
+       100% 
+        opacity: 1
