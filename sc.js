@@ -7,30 +7,27 @@ const background = document.querySelector(".container__background");
 const searchBtn = document.getElementById("search-btn");
 const cityInput = document.getElementById("city");
 
+function addEvent(element, event, callback) {
+  if (element && typeof element.addEventListener === 'function') {
+    element.addEventListener(event, callback);
+  } else {
+    console.error('Invalid element provided:', element);
+  }
+}
+
 function handleInput() {
   const cityName = cityInput.value;
   if (cityName) {
       getWeatherData(cityName);
   }
 }
-
-function addMultipleEventListeners(elements, events, handler) {
-  elements.forEach(element => {
-    events.forEach(event => element.addEventListener(event, handler));
-  });
+function handleEnter(event) {
+  if (event.key !== 'Enter') return
+  handleInput()
 }
+addEvent(searchBtn, 'click', handleInput);
+addEvent(cityInput, 'keypress', handleEnter);
 
-const elements = [cityInput, searchBtn];
-const events = ['click'];
-
-function handleInput() {
-  const cityName = cityInput.value;
-  if (cityName) {
-    getWeatherData(cityName);
-  }
-}
-
-addMultipleEventListeners(elements, events, handleInput);
 
 
 async function getWeatherData(city) {
@@ -54,7 +51,7 @@ function displayWeatherData(data) {
     console.log(data);
 
   document.getElementById("city-name").textContent = data.name; 
-  document.getElementById("moveheading_call").textContent = `${data.name} city weather`;
+  document.getElementById("moveheading_call").textContent = `${data.name} weather`;
   document.getElementById(
     "temperature"
   ).textContent = `Temperature: ${data.main.temp} °C`;
