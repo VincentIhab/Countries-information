@@ -6,6 +6,8 @@
     <title>City Weather</title>
     <link rel="stylesheet" href="styles/css/style.css">
     <link rel="shortcut icon" type="image/x-icon" href="./styles/img/logo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 
 </head>
 <body>
@@ -38,14 +40,31 @@
             </button>
         </div>
         <div class="weather-info weather-info_hidden">
-            <h2 id="city-name"></h2>
-            <p id="temperature"></p>
-            <p id="description"></p>
-            <p id="humidity"></p>
-            <p id="wind-speed"></p>
+            <div class="weather-detiles">
+                    <div>
+                        <p class="weather-detiles__det" id="temperature"></p>
+                        <span id="wind-temperature_head"></span>
+                    </div>
+                    <div>
+                        <p class="weather-detiles__det" id="humidity"></p>    
+                        <span id="wind-humidity_head"></span>
+                    </div>
+                    <div>
+                        <p class="weather-detiles__det" id="wind-speed"></p>    
+                        <span id="wind-speed_head"></span>
+                    </div>
+                    <div>
+                        <p class="weather-detiles__det" id="description"></p>  
+                        <p class="weather-detiles__det" id="clouds"></p>  
+                        <span id="wind-description_head"></span>
+                    </div>
+            </div>
         </div>
-
+    </main>
+    <div class="top-cities">
+        <div id="top-cities"></div>
     </div>
+
     <script src="sc.js"></script>
 </body>
 </html>

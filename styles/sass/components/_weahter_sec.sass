@@ -1,11 +1,6 @@
 .weather-info
-    @include absCenter
-    background-color: #838383
-    padding: 5rem 10rem
-    display: flex
-    flex-direction: column
-    transform: translate(-50%, -0%)
-    
+    width: 100%
+
     
 .weather-info_hidden
     opacity: 0
@@ -18,3 +13,39 @@
     animation-timing-function: ease 
 .weather-info_show
     opacity: 1
+
+    &::before
+      content: ''
+      width: 100%
+      height: 100vh
+      position: absolute
+      top: 0
+      left: 0
+      z-index: -1
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.781) 0%, rgba(0, 0, 0, 0) 100%)
+
+
+
+.weather-detiles 
+    z-index: 1
+    @include absCenter
+    padding: 1.5rem 3rem
+    display: flex
+    transform: translate(-50%, -0%)
+    gap: 1rem
+    justify-content: space-between
+    background-color: #0a0a0a6b
+    backdrop-filter: blur(8px)
+    -webkit-backdrop-filter: blur(10px)
+    width: 50%
+    border-radius: 8px
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+    &__det
+        color: #fff
+
+    div
+        display: block
+
+        h3
+            color: #8f8f8f
+
