@@ -227,10 +227,10 @@ async function displayTopCitiesWeather(cities) {
 
       cityWeatherElement.innerHTML = `
         <h4>${data.name}</h4>
-        <p> <span class="re">${data.main.temp} <i class="${tempIconClass} temp-icon w-icon"></i><span class="add_det">°C</span></span><span class="st">Temperature</span></p>
-        <p> <span class="re">${data.weather[0].description}<i class="${weatherIconClass} weather-icon w-icon"></i></span><span class="st">Report</span></p>
-        <p> <span class="re">${data.main.humidity}<span class="add_det">%</span><i class="${humidityIconClass} humidity-icon w-icon"></i></span><span class="st">Humidity</span></p>
-        <p> <span class="re">${data.wind.speed} <span class="add_det">m/s</span><i class="${windIconClass} wind-icon w-icon"></i></span><span class="st">Wind Speed</span></p>
+        <p> <span class="re"><i class="${tempIconClass} temp-icon w-icon ml"></i>${data.main.temp} <span class="add_det">°C</span></span><span class="st">Temp</span></p>
+        <p> <span class="re"><i class="${weatherIconClass} weather-icon w-icon"></i>${data.weather[0].description}</span><span class="st">Sky</span></p>
+        <p> <span class="re"><i class="${humidityIconClass} humidity-icon w-icon ml"></i>${data.main.humidity}<span class="add_det">%</span></span><span class="st">Humidity</span></p>
+        <p> <span class="re"><i class="${windIconClass} wind-icon w-icon"></i>${data.wind.speed} <span class="add_det">m/s</span></span><span class="st">Speed</span></p>
       `;
       topCitiesContainer.appendChild(cityWeatherElement);
     } catch (error) {

@@ -352,7 +352,7 @@ button:hover .search-box__search-i-2 {
   gap: 0rem;
   margin-left: 0.5rem;
   font-size: 1.2rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.8rem;
 }
 
 .st {
@@ -365,6 +365,7 @@ button:hover .search-box__search-i-2 {
   color: rgba(211, 211, 211, 0.8235294118);
   font-weight: 500;
   font-size: 1.3rem;
+  margin-left: 2rem;
 }
 
 .add_det {
@@ -376,6 +377,13 @@ button:hover .search-box__search-i-2 {
 .w-icon {
   margin-left: 0.5rem;
   color: #9b9a9a;
+  position: absolute;
+  left: 1.4rem;
+  margin-top: 0.5rem;
+}
+
+.ml {
+  left: 1.6rem;
 }
 
 /*# sourceMappingURL=style.css.map */
