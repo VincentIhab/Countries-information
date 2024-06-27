@@ -7,18 +7,29 @@ const background = document.querySelector(".container__background");
 const searchBtn = document.getElementById("search-btn");
 const cityInput = document.getElementById("city");
 const topCitiesContainer = document.getElementById("top-cities");
-let citiesAndCountries = [];
+const suggestionsBox = document.getElementById("suggestions");
 
-fetch('cities_and_countries.json')
-  .then(response => response.json())
-  .then(data => {
+
+let citiesAndCountries;
+let fuzzySet;
+
+async function fetchData() {
+
+  try {
+    const response = await fetch('cities_and_countries.json');
+    const data = await response.json();
     console.log(data);
-    citiesAndCountries.push(...data)
-  })
-  .catch(error => console.error('Error fetching cities and countries:', error));
+    citiesAndCountries = data;
+    fuzzySet = FuzzySet(citiesAndCountries);
+    // Use the data here or call another function
+    console.log(citiesAndCountries); // Now this will have the fetched data
+  } catch (error) {
+    console.error('Error fetching cities and countries:', error);
+  }
+}
+fetchData();
 
-console.log(citiesAndCountries);
-const fuzzySet = FuzzySet(citiesAndCountries);
+
 
 function addEvent(element, event, callback) {
   if (element && typeof element.addEventListener === 'function') {
@@ -58,7 +69,28 @@ cityInput.onkeyup = () => {
     })
     console.log(results);
   }
+  displaySuggestions(results)
 }
+
+
+function displaySuggestions(suggestionsResults) {
+  suggestionsBox.innerHTML = '';
+  const ul = document.createElement('ul');
+  suggestionsResults.forEach(list => {
+    const li = document.createElement('li');
+    li.textContent = list;
+    li.addEventListener('click', () => {
+      selectInput(li);
+    });
+    ul.appendChild(li);
+  });
+  suggestionsBox.appendChild(ul);
+}
+
+function selectInput(listItem) {
+  getWeatherData(listItem.textContent);
+}
+
 
 async function getWeatherData(city) {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
