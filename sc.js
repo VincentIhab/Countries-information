@@ -7,6 +7,18 @@ const background = document.querySelector(".container__background");
 const searchBtn = document.getElementById("search-btn");
 const cityInput = document.getElementById("city");
 const topCitiesContainer = document.getElementById("top-cities");
+let citiesAndCountries = [];
+
+fetch('cities_and_countries.json')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    citiesAndCountries.push(...data)
+  })
+  .catch(error => console.error('Error fetching cities and countries:', error));
+
+console.log(citiesAndCountries);
+const fuzzySet = FuzzySet(citiesAndCountries);
 
 function addEvent(element, event, callback) {
   if (element && typeof element.addEventListener === 'function') {
@@ -19,7 +31,13 @@ function addEvent(element, event, callback) {
 function handleInput() {
   const cityName = cityInput.value;
   if (cityName) {
+    const suggestion = fuzzySet.get(cityName, null, 0.5);
+    if (suggestion && suggestion.length > 0) {
+      const bestMatch = suggestion[0][1];
+      getWeatherData(bestMatch);
+    } else {
       getWeatherData(cityName);
+    }
   }
 }
 
@@ -30,6 +48,17 @@ function handleEnter(event) {
 
 addEvent(searchBtn, 'click', handleInput);
 addEvent(cityInput, 'keypress', handleEnter);
+
+cityInput.onkeyup = () => {
+  let results = [];
+  let input = cityInput.value;
+  if(input.length) {
+    results = citiesAndCountries.filter(keyword => {
+      return keyword.toLowerCase().includes(input.toLowerCase())
+    })
+    console.log(results);
+  }
+}
 
 async function getWeatherData(city) {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -56,14 +85,27 @@ function displayWeatherData(data) {
   document.getElementById("description").innerHTML = `${data.weather[0].description}`;
   document.getElementById("humidity").innerHTML = `${data.main.humidity}%`;
   document.getElementById("wind-speed").innerHTML = `${data.wind.speed}`;
-  document.getElementById("clouds").innerHTML = `${data.clouds.all === 0 ? `No clouds` : `${data.clouds.all} clouds`}`;
-  const {lon ,lat} = [data.coord]
-  const country = data.sys.country
+  const { lon, lat } = data.coord;
+  const country = data.sys.country;
+  
   document.getElementById("wind-temperature_head").innerHTML = `Temperature <i class="${getTemperatureIcon(data.main.temp)} temp-icon"></i>`;
   document.getElementById("wind-humidity_head").innerHTML = `Humidity <i class="${getHumidityIcon(data.main.humidity)} weather-icon"></i>`;
   document.getElementById("wind-speed_head").innerHTML = `Speed <i class="${getWindSpeedIcon(data.wind.speed)} weather-icon"></i>`;
   document.getElementById("wind-description_head").innerHTML = `Report <i class="${getWeatherIcon(data.weather[0].description)} weather-icon"></i>`;
-  
+
+  const cloudsSection = document.getElementById("weather-detiles__hide_clouds");
+  const cloudsElement = document.getElementById("clouds");
+  const clouds_head = document.getElementById("wind-clouds_head");
+
+  if (data.clouds && data.clouds.all) {
+    cloudsSection.style.display = 'block';
+    cloudsElement.innerHTML = `${data.clouds.all}`;
+    clouds_head.innerHTML = `Clouds`
+  } else {
+    cloudsSection.style.display = 'none';
+    cloudsElement.innerHTML = '';
+    clouds_head.innerHTML = ''
+  }
 
   getCityName(data.name);
   moveElements();
