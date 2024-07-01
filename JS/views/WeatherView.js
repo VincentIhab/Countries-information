@@ -4,8 +4,9 @@ import {
   getHumidityIcon,
   getWindSpeedIcon,
 } from "../utils/IconUtil.js";
+import { addEvent } from "../utils/EventUtil.js";
 
-export default class WeatherView {
+class WeatherView {
   constructor() {
     this.searchBox = document.querySelector(".search-box");
     this.moveHeading = document.querySelector(".moveheading_call");
@@ -19,6 +20,15 @@ export default class WeatherView {
     );
     this.cloudsElement = document.getElementById("clouds");
     this.clouds_head = document.getElementById("wind-clouds_head");
+    this.searchBtn = document.getElementById("search-btn");
+  }
+
+  addHandlerRender(Handler) {
+    addEvent(this.searchBtn, "click", () => Handler(this.cityInput.value));
+    addEvent(this.cityInput, "keypress", (event) => {
+      if (event.key !== "Enter") return;
+      Handler(this.cityInput.value);
+    });
   }
 
   displayWeatherData(data) {
@@ -85,3 +95,5 @@ export default class WeatherView {
     document.body.style.backgroundImage = `url(${url})`;
   }
 }
+
+export default new WeatherView();

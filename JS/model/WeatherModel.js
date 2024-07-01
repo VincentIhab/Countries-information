@@ -1,26 +1,18 @@
-export default class WeatherModel {
-  constructor(apiKey) {
-    this.apiKey = apiKey;
-  }
+import { Get_JSON, GET_API } from "../helpers.js";
 
-  async getWeatherData(city, apiKey) {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error("City not found");
-    }
-    return await response.json();
-  }
-
-  async getCityPhoto(city, accessKey) {
-    const url = `https://api.unsplash.com/search/photos?query=${city}&client_id=${accessKey}`;
+class WeatherModel {
+  async getWeatherData(city) {
     try {
-      console.log(`Fetching photo for city: ${city} with URL: ${url}`); // Debugging
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error("Failed to fetch photo");
-      }
-      const data = await response.json();
+      const data = await Get_JSON(GET_API("WeatherData", city));
+      return data;
+    } catch (err) {
+      console.log("city not found");
+    }
+  }
+
+  async getCityPhoto(city) {
+    try {
+      const data = await Get_JSON(GET_API("CityPhoto", city));
       if (data.results.length > 0) {
         return data.results[0].urls.regular;
       } else {
@@ -28,7 +20,8 @@ export default class WeatherModel {
       }
     } catch (error) {
       console.error("Error in getCityPhoto:", error.message); // Debugging
-      throw error;
     }
   }
 }
+
+export default new WeatherModel();

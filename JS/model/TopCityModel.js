@@ -9,7 +9,7 @@ export default async function TopCityModel(callBackFunction) {
   ];
   let data = [];
   for (const city of cities) {
-    data.push(await callBackFunction(city, "f7d8f6fc7b4a30ec9ebc224d9f87a91f"));
+    data.push(await callBackFunction(city));
   }
   return data;
 }
