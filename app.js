@@ -1,3 +1,4 @@
+import "./styles/sass/main.sass";
 import WeatherController from "/JS/controllers/WeatherController.js";
 import SuggestionController from "/JS/controllers/SuggestionController.js";
 
