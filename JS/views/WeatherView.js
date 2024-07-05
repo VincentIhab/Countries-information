@@ -7,59 +7,54 @@ import {
 import { addEvent } from "../utils/EventUtil.js";
 
 class WeatherView {
-  constructor() {
-    this.searchBox = document.querySelector(".search-box");
-    this.moveHeading = document.querySelector(".moveheading_call");
-    this.headingText = document.querySelector(".hide_heading");
-    this.weatherInfo = document.querySelector(".weather-info");
-    this.background = document.querySelector(".container__background");
-    this.cityInput = document.getElementById("city");
-    this.topCitiesContainer = document.getElementById("top-cities");
-    this.cloudsSection = document.getElementById(
-      "weather-detiles__hide_clouds"
-    );
-    this.cloudsElement = document.getElementById("clouds");
-    this.clouds_head = document.getElementById("wind-clouds_head");
-    this.searchBtn = document.getElementById("search-btn");
-  }
+  // Essential Elements
+  searchInput = document.querySelector(".search-box__input");
+  searchForm = document.getElementById("form");
+  weatherInfo = document.querySelector(".weather-info");
+
+  // Elements used Before Search
+  background = document.querySelector(".container__background");
+  topCitiesContainer = document.getElementById("top-cities");
+  cloudsSection = document.getElementById("weather-details__hide_clouds");
+  cloudsElement = document.getElementById("clouds");
+  clouds_head = document.getElementById("wind-clouds_head");
+
+  // Elements used after Search
+  searchTitle = document.getElementById("label");
+  temperatureLabel = document.getElementById("temperature");
+  descriptionLabel = document.getElementById("description");
+  humidityLabel = document.getElementById("humidity");
+  windSpeedLabel = document.getElementById("wind-speed");
+  // Icons
+  Temperature_Icon = document.getElementById("wind-temperature_head");
+  Humidity_Icon = document.getElementById("wind-humidity_head");
+  windSpeed_Icon = document.getElementById("wind-speed_head");
+  description_Icon = document.getElementById("wind-description_head");
 
   addHandlerRender(Handler) {
-    addEvent(this.searchBtn, "click", () => Handler(this.cityInput.value));
-    addEvent(this.cityInput, "keypress", (event) => {
-      if (event.key !== "Enter") return;
-      Handler(this.cityInput.value);
+    addEvent(this.searchForm, "submit", (e) => {
+      e.preventDefault();
+      Handler(this.searchInput.value);
     });
   }
 
   displayWeatherData(data) {
-    document.getElementById(
-      "moveheading_call"
-    ).textContent = `${data.name} weather`;
-    document.getElementById("temperature").innerHTML = `${data.main.temp} °C`;
-    document.getElementById(
-      "description"
-    ).innerHTML = `${data.weather[0].description}`;
-    document.getElementById("humidity").innerHTML = `${data.main.humidity}%`;
-    document.getElementById("wind-speed").innerHTML = `${data.wind.speed}`;
+    this.searchTitle.textContent = `${data.name} weather`;
+    this.temperatureLabel.innerHTML = `${data.main.temp} °C`;
+    this.descriptionLabel.innerHTML = `${data.weather[0].description}`;
+    this.humidityLabel.innerHTML = `${data.main.humidity}%`;
+    this.windSpeedLabel.innerHTML = `${data.wind.speed}`;
 
-    document.getElementById(
-      "wind-temperature_head"
-    ).innerHTML = `Temperature <i class="${getTemperatureIcon(
+    this.Temperature_Icon.innerHTML = `Temperature <i class="${getTemperatureIcon(
       data.main.temp
     )} temp-icon"></i>`;
-    document.getElementById(
-      "wind-humidity_head"
-    ).innerHTML = `Humidity <i class="${getHumidityIcon(
+    this.Humidity_Icon.innerHTML = `Humidity <i class="${getHumidityIcon(
       data.main.humidity
     )} weather-icon"></i>`;
-    document.getElementById(
-      "wind-speed_head"
-    ).innerHTML = `Speed <i class="${getWindSpeedIcon(
+    this.windSpeed_Icon.innerHTML = `Speed <i class="${getWindSpeedIcon(
       data.wind.speed
     )} weather-icon"></i>`;
-    document.getElementById(
-      "wind-description_head"
-    ).innerHTML = `Report <i class="${getWeatherIcon(
+    this.description_Icon.innerHTML = `Report <i class="${getWeatherIcon(
       data.weather[0].description
     )} weather-icon"></i>`;
 
@@ -77,17 +72,14 @@ class WeatherView {
   }
 
   moveElements() {
-    this.cityInput.value = "";
-    this.cityInput.placeholder = "Search";
-    this.searchBox.classList.add("form_move");
-    this.headingText.classList.add("cut-word");
-    this.moveHeading.classList.add("moveheading");
+    this.searchInput.value = "";
+    this.searchInput.placeholder = "Search";
     this.weatherInfo.classList.replace(
       "weather-info_hidden",
       "weather-info_show"
     );
     this.background.style.display = "none";
-    this.topCitiesContainer.classList.add("cut-word");
+    this.topCitiesContainer.classList.add("Hide_Container");
   }
 
   setBackgroundImage(url) {

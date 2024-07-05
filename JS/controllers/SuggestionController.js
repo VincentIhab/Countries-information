@@ -14,7 +14,7 @@ export default class SuggestionController {
       this.citiesAndCountries = data;
       this.fuzzySet = FuzzySet(this.citiesAndCountries);
 
-      const cityInput = document.getElementById("city");
+      const cityInput = document.querySelector(".search-box__input");
       cityInput.onkeyup = () => this.displaySuggestions(cityInput.value);
     } catch (error) {
       console.error("Error fetching cities and countries:", error);

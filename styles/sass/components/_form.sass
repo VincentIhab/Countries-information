@@ -1,6 +1,12 @@
 .search-box
-    @include absCenter
-    h3 
+
+    
+    div
+        position: relative
+        display: flex
+        width: 50rem
+
+    label 
         font-weight: 800
         font-size: 2.4rem
         color: #c4c4c4
@@ -39,11 +45,12 @@
         background-color: $color-black-low-opacity
         box-shadow: 0rem .3rem 1rem #00000013
         cursor: pointer
-        position: absolute
+        align-self: center
+        margin-left: -5.5rem
+        position: relative
+        
         &:hover
             background-color: $color-black
-        
-
 
     &__search-i-1
         position: absolute
@@ -55,6 +62,7 @@
         transform: rotate(135deg)
     &__search-i-2
         @include absCenter
+        position: absolute
         top: 49%
         left: 48% 
         width: 1.9rem
@@ -64,18 +72,12 @@
         border: .3rem solid #1f1403
         transition: all .3s ease-in
         
+
+        
     button:hover &__search-i-2
         background-color: #1b1b1b21
         width: 1.9rem
         height: 1.9rem
 
-
-
-
-
-.form_move 
-    top: 15%
-    width: 100%
-    
 
 

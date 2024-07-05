@@ -9,12 +9,43 @@
     z-index: -1
 
 .container
-    display: block
-    width: 100%
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(1fr, 6fr))
+    grid-auto-flow: column
+    gap: 1rem
+    width: 85%
+    background-color: #00000052
+    padding: 1rem 2rem
+    border-radius: 8px 
+    margin: 0 auto
     height: 55vh
 
 
-// .suggestions 
+.chart-container 
+    position: relative
+    background-color: #0000008e
+    border-radius: 8px
+    padding: 1.5rem 3rem
+    width: 100%
+    max-width: 900px
+    height: 500px
+        
+
+// .info 
+//     margin-bottom: 20px
+//     text-align: center
+        
+//     h2 
+//        margin: 5px 0
+//        font-size: 24px
+        
+//     p 
+//        margin: 5px 0
+//        color: #555
+        
+        
+   
+// .   suggestions 
 //   border: 1px solid #ccc
 //   max-height: 200px
 //   overflow-y: auto

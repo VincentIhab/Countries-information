@@ -30,6 +30,14 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[path][name].[ext]",
+            },
+          },
+        ],
         type: "asset/resource",
         generator: {
           filename: "img/[name][ext]", // This will place images in the 'Final/img' folder
@@ -55,7 +63,6 @@ module.exports = {
     },
     compress: true,
     port: 9000,
-    historyApiFallback: true, // This will help to serve index.html for all 404 routes
   },
   mode: "development",
 };
