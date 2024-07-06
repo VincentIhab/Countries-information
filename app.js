@@ -3,10 +3,14 @@
 // import "./styles/img/logo.png";
 import WeatherController from "/JS/controllers/WeatherController.js";
 import SuggestionController from "/JS/controllers/SuggestionController.js";
-import chart from "/JS/model/chartModel.js";
+// import chart from "/JS/model/chartModel.js";
 import mapModel from "./JS/model/mapModel.js";
+import EarthComponent from "/JS/model/thereDModel.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  const earth = new EarthComponent("earth-container");
+  earth.setPosition(0, 0);
+
   // mapModel.getPosition();
   const weatherController = new WeatherController();
   const suggestionController = new SuggestionController();
