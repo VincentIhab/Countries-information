@@ -1,9 +1,10 @@
-import { Get_JSON, GET_API } from "../helpers.js";
+import { Get_JSON, GET_API } from "../../helpers.js";
 
 class WeatherModel {
   async getWeatherData(city) {
     try {
       const data = await Get_JSON(GET_API("WeatherData", city));
+      console.log(data);
       return data;
     } catch (err) {
       console.log("city not found");

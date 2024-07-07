@@ -27,7 +27,7 @@ export default class EarthComponent {
       0.1,
       1000
     );
-    this.camera.position.set(0, 0, 20); // Adjust camera position
+    this.camera.position.set(0, 0, 10); // Adjust camera position
     this.camera.lookAt(0, 0, 0); // Look at the center
 
     // Renderer setup
@@ -40,11 +40,13 @@ export default class EarthComponent {
 
     // OrbitControls for interaction
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-    this.controls.enableZoom = true; // Enable zooming
+    this.controls.enableZoom = false; // Enable zooming
     this.controls.enableRotate = true; // Enable rotation
     this.controls.enablePan = true; // Enable panning
     this.controls.autoRotate = true; // Enable auto-rotation
     this.controls.autoRotateSpeed = 0.5; // Adjust auto-rotation speed
+    this.controls.minDistance = 7; // Minimum zoom distance
+this.controls.maxDistance = 7; // Maximum zoom distance
 
     // Position camera
     this.camera.position.z = 15;
@@ -69,14 +71,14 @@ export default class EarthComponent {
   }
 
   addStars() {
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 10000; i++) {
       const starGeometry = new THREE.SphereGeometry(0.1, 24, 24);
       const starMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
       const star = new THREE.Mesh(starGeometry, starMaterial);
 
       const [x, y, z] = Array(3)
         .fill()
-        .map(() => THREE.MathUtils.randFloatSpread(300));
+        .map(() => THREE.MathUtils.randFloatSpread(400));
       star.position.set(x, y, z);
 
       this.scene.add(star);

@@ -1,6 +1,5 @@
-export default async function fetchData() {
+export default async function fetchData(countryCode) {
   // const countryCode = document.getElementById('countryInput').value.toUpperCase();
-  const countryCode = "EG";
   const countryInfoUrl = `https://restcountries.com/v3.1/all`;
   const urls = [
     `https://api.worldbank.org/v2/country/${countryCode}/indicator/NY.GDP.PCAP.CD?format=json`,
@@ -376,4 +375,3 @@ function createChart(
   const chartContainer = document.getElementById("chartContainer");
   chartContainer.appendChild(checkboxes);
 }
-fetchData();

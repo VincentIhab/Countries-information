@@ -1,4 +1,4 @@
-import CityModel from "../model/cityModel.js";
+import CityModel from "../model/SearchModel/SearchModel.js";
 import SuggestionView from "../views/SuggestionView.js";
 
 export default class SuggestionController {
