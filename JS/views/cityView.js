@@ -6,7 +6,6 @@ import {
 } from "../utils/IconUtil.js";
 
 export default function renderTopCityView(data) {
-  console.log(data);
   const topCitiesContainer = document.getElementById("top-cities");
   data.map((data) => {
     const cityWeatherElement = document.createElement("div");
