@@ -1,21 +1,20 @@
-import WeatherModel from "../model/DataModel/WeatherModel.js";
-import {data} from "../model/Model.js";
-import WeatherView from "../views/WeatherView.js";
+import Model from "../model/AppModel.js";
+// import WeatherView from "../views/View.js";
 import TopCityModel from "../model/SearchModel/SuggestionModel.js";
-import renderTopCityView from "../views/cityView.js";
+import renderTopCityView from "../views/SearchView/SuggestionView.js";
 
-export default class WeatherController {
+export default class DataController {
   constructor() {
-    this.topCity();
-    WeatherView.addHandlerRender(this.handleRequest);
-    data()
+    this.handleUserInput()
   }
 
-  async topCity() {
-    const data = await TopCityModel(WeatherModel.getWeatherData);
-    renderTopCityView(data);
+  // async topCity() {
+  //   const data = await TopCityModel(WeatherModel.getWeatherData);
+  //   renderTopCityView(data);
+  // }
+  handleUserInput(input) {
+    Model.addData("cairo");
   }
-
   async handleRequest(SearchInput) {
     if (!SearchInput) return;
     try {

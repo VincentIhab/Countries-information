@@ -1,5 +1,5 @@
 import CityModel from "../model/SearchModel/SearchModel.js";
-import SuggestionView from "../views/SuggestionView.js";
+import SuggestionView from "../views/SearchView/SearchView.js";
 
 export default class SuggestionController {
   constructor() {

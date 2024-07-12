@@ -4,6 +4,11 @@ import {
   PHOTO_API_KEY,
   WEATHER_API_ENDPOINT,
   PHOTO_API_ENDPOINT,
+  NEWS_API_KEY,
+  NEWS_API_ENDPOINT,
+  WIKI_API_ENDPOINT,
+  GEONAMES_API_ENDPOINT,
+  GEONAMES_API_KEY
 } from "./config.js";
 
 const timeout = function (s) {
@@ -13,6 +18,7 @@ const timeout = function (s) {
     }, s * 1000);
   });
 };
+
 
 // Function to fetch API URLs and return data
 export const Get_JSON = async function (url) {
@@ -28,17 +34,29 @@ export const Get_JSON = async function (url) {
 };
 
 // Function to fetch API URLs based on type
-export function GET_API(type, city) {
+export function GET_API(type, INPUT) {
   switch (type) {
-    case "WeatherData":
+    
+    case "Data":
       return `${WEATHER_API_ENDPOINT}?q=${encodeURIComponent(
-        city
+        INPUT
       )}&appid=${WEATHER_API_KEY}&units=metric`;
-    case "CityPhoto":
+
+    case "Photo":
       return `${PHOTO_API_ENDPOINT}?query=${encodeURIComponent(
-        city
+        INPUT
       )}&client_id=${PHOTO_API_KEY}`;
-    default:
+      
+    case "News":
+      return `${NEWS_API_ENDPOINT}?q=${encodeURIComponent(INPUT)}&apikey=${NEWS_API_KEY}`;
+    
+    case "Wiki":
+      return `${WIKI_API_ENDPOINT}${encodeURIComponent(INPUT)}&origin=*`;
+
+    case "GeoNames":
+      return `${GEONAMES_API_ENDPOINT}${encodeURIComponent(INPUT)}&username=${GEONAMES_API_KEY}`;
+    
+      default:
       throw new Error(`Unsupported API type: ${type}`);
   }
 }
