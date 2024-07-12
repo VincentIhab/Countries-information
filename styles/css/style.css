@@ -90,8 +90,6 @@ body {
 
 .container {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   gap: 1rem;
   width: 95%;
@@ -99,39 +97,6 @@ body {
   border-radius: 8px;
   margin: 0 auto;
   margin-bottom: 5rem;
-}
-
-.chart-container {
-  position: relative;
-  border-radius: 8px;
-  padding: 1.5rem 3rem;
-  max-width: 0%;
-  height: 45rem;
-}
-
-#economicChart {
-  display: none;
-}
-
-.results {
-  width: 80%;
-}
-
-.buttons_contanier {
-  margin: 0 auto;
-  display: flex;
-  padding: 5rem;
-  align-items: center;
-  align-content: center;
-}
-
-#map {
-  justify-self: flex-end;
-  width: auto;
-  height: 45rem;
-  border-radius: 8px;
-  opacity: 0.9;
-  z-index: 25;
 }
 
 .earth-container {
@@ -183,7 +148,7 @@ body {
 }
 .search-box label {
   font-weight: 800;
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   color: #c4c4c4;
   text-shadow: 0 0.5rem 0.2rem rgba(0, 0, 0, 0.231372549);
   letter-spacing: 0.11rem;
@@ -194,7 +159,7 @@ body {
   width: 50rem;
   height: 4rem;
   padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.6039215686);
+  background-color: rgba(27, 27, 27, 0.6039215686);
   border-radius: 8px;
   border: 3px solid rgba(0, 0, 0, 0.0823529412);
   backdrop-filter: blur(3px);
@@ -235,8 +200,8 @@ body {
 }
 .search-box__search-i-2 {
   position: absolute;
-  top: 40%;
-  left: 50%;
+  top: 45%;
+  left: 20%;
   transform: translate(-50%, -50%);
   position: absolute;
   top: 49%;

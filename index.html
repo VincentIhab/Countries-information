@@ -18,6 +18,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet-src.min.js" integrity="sha512-3/WyQrhTdqSVmSifQS62akgtNBhZha2lS44TnoN9Jk3J01FvsKK4suVmz6t5FtccGb5iJw58GoFhBjPE5EPc8Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/controls/OrbitControls.js"></script>
     <script defer type="module" src="/app.js" ></script>
@@ -25,6 +26,8 @@
 </head>
 <body>
     <img class="container__background" src="/styles/img/background.jpg" />
+    <div id="loadingSpinner" class="spinner"></div>
+
     <nav class="nav">
         <div class="nav__container_logo">
             <img class="nav_logo" src="./styles/img/logo.png" alt="WeatherLogo"/>
@@ -96,7 +99,7 @@
             </div>
             
             <!-- <div id="map"></div> -->
-        <!-- <div id="countryInfo"></div> -->
+        <!-- <div id="chartContainer"></div> -->
     </main>
     <div class="top-cities">
         <div id="top-cities"></div>
